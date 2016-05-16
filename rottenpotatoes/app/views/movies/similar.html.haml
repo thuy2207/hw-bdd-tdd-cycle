@@ -1,0 +1,17 @@
+-# in app/views/movies/similar.html.haml
+
+%h2 Movies similar to #{@movie.title}
+
+%p#description= @movie.description
+
+%h3 Movies by same director:
+- if @sameDirectorMovies
+  %ul
+    - @sameDirectorMovies.each do |movie|
+      %li
+        %td= link_to "#{movie.title}", movie_path(movie)
+
+%div
+  = link_to 'Back to movie list', movies_path
+%div
+  = link_to "Back to movie", movie_path(@movie)
